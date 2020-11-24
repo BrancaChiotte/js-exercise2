@@ -62,7 +62,7 @@ kids;
 function trying (x, arr) {
   // Create an unordered list
   var ul = document.createElement("ul");
-  var li;
+  var li = "";
   x.appendChild(ul);
   arr.forEach(function(item) {
     // create a new list item
@@ -79,4 +79,3 @@ var divAdults = document.getElementById('adults');
 
 trying(divKids, kids);
 trying(divAdults, adults);
-
