@@ -31,7 +31,8 @@ namesSum.forEach(function (name, i) {
   };
   var city = cities[Math.floor(Math.random() * cities.length)];
   var allInfo = makeData.call(x, city, country);
-  arrInfo.push(allInfo);
+  x.msg = allInfo; // correction: pass the message to the object
+  arrInfo.push(x); //correction: arrInfo will have the object and not the message
 
 });
 
@@ -44,12 +45,12 @@ const makeDataEs6 = (city, country) => `Hello my name is ${name}, I am ${age} an
 // 4 - Add the return sentence of the function, using the filter method, to two different arrays. One for adults (age>= 18) and other for kids (age<18)
 
 var kids = arrInfo.filter((info) => {
-  return info.match(/[0][0-9]| 1[0-7]/)
+  console.log(info)
+  return info.age < 18 //correction: since you now have the age and the message in the object you can do this condition in filter
 });
 
 var adults = arrInfo.filter((info) => {
-  console.log(info)
-  return info.match(/ 1[8-9]|[2-9][0-9]/)
+  return info.age >= 18 //correction: since you now have the age and the message in the object you can do this condition in filter
 });
 
 
@@ -69,7 +70,7 @@ function trying (x, arr) {
     // create a new list item
     var li = document.createElement('li');
     // append the text to the li
-    li.textContent = item;
+    li.textContent = item.msg; //correction: we use the property of the object to display
         // li.appendChild(document.createTextNode(item));
     // append the list item to the ul
     ul.appendChild(li);
